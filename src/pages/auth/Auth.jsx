@@ -49,19 +49,19 @@ const Auth = () => {
   const handleLogin = async () =>{
     if(validateLogin()){
       const response = await apiClient.post(LOGINROUTE, {email,password}, {withCredentials: true})
-      console.log(response)
+ 
       if(response.data.user.profileSetup){
-        navigate('/chat')
+        navigate('/chat');
       }else{
         setUserInfo(response.data.user)
-        navigate('/profile')
+        navigate('/profile');
       }
     }
   } 
   const handleSignup = async () =>{
     if(validateSignup()){
       const response = await apiClient.post(SIGNUPROUTE, {email,password}, {withCredentials: true})
-      console.log(response)
+
       if(response.status===200){
         setUserInfo(response.data.user)
         navigate('/profile');
@@ -105,7 +105,7 @@ const Auth = () => {
                     value={password}
                     onChange={(e)=>setPassword(e.target.value)}
                     />
-                    <Button className='rounded-full p-6' onClick={handleLogin}>Login</Button>
+                    <Button className='rounded-full p-6 cursor-pointer' onClick={handleLogin}>Login</Button>
                   </TabsContent>
                   <TabsContent  className='flex flex-col gap-5 mt-5' value="signup">
                     <Input 
@@ -129,7 +129,7 @@ const Auth = () => {
                     value={confirmPassword}
                     onChange={(e)=>setConfirmPassword(e.target.value)}
                     />
-                    <Button className='rounded-full p-6' onClick={handleSignup}>Signup</Button>
+                    <Button className='rounded-full p-6 cursor-pointer' onClick={handleSignup}>Signup</Button>
                   </TabsContent>
                 </Tabs>
               </div>

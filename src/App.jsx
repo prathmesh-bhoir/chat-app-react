@@ -33,9 +33,9 @@ const App = () => {
         }else{
           setUserInfo(undefined)
         }
-        console.log({response})
+  
       } catch (error) {
-        console.log(error)
+ 
       } finally{
         setLoading(false)
       }
@@ -58,7 +58,7 @@ const App = () => {
       <Routes>
         <Route path='auth' element={<AuthRoute> <Auth /> </AuthRoute>} />
         <Route path='chat' element={<PrivateRoute> <Chat /> </PrivateRoute>} />
-        <Route path='profile' element={<PrivateRoute> <Profile /> </PrivateRoute>} />
+        <Route path='profile' element={<PrivateRoute><Profile/></PrivateRoute>}/>
         <Route path='*' element={<Navigate to='/Auth' />} />
       </Routes>    
     </BrowserRouter>
