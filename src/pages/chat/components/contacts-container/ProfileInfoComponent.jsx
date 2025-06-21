@@ -26,7 +26,7 @@ const ProfileInfoComponent = () => {
         }
     }
   return (
-    <div className="absolute bottom-0 h-16 flex items-center justify-center px-10 w-full bg-[#2a2b33]">
+    <div className="absolute bottom-0 h-16 flex items-center justify-between px-10 w-full bg-[#2a2b33]">
       <div className="flex gap-3 items-center justify-center">
         <div className="w-12 h-12 relative">
           <Avatar className="h-12 w-12 rounded-full overflow-hidden">
@@ -34,7 +34,7 @@ const ProfileInfoComponent = () => {
               <AvatarImage
                 src={`${HOST}/${userInfo.image}`}
                 alt="profile"
-                className="object-cover w-full h-full bg-black"
+                className="object-cover rounded-full h-full w-full bg-black"
               />
             ) : (
               <div
@@ -49,7 +49,7 @@ const ProfileInfoComponent = () => {
             )}
           </Avatar>
         </div>
-        <div className='pr-2'>
+        <div className=''>
           {userInfo.firstName && userInfo.lastName
             ? `${userInfo.firstName} ${userInfo.lastName}`
             : ""}
