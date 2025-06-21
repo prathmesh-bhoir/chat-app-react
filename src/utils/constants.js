@@ -15,3 +15,9 @@ export const ADDPROFILEIMAGEROUTE = `${AUTHROUTES}/add-profile-image`;
 export const DELETEPROFILEIMAGEROUTE = `${AUTHROUTES}/delete-profile-image`;
 
 export const LOGOUTROUTE = `${AUTHROUTES}/logout`;
+
+
+
+export const CONTACTSROUTES ="api/contacts";
+
+export const SEARCHCONTACTSROUTES = `${CONTACTSROUTES}/search`;
