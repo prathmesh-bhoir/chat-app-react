@@ -9,8 +9,10 @@ import { apiClient } from '@/lib/api-client';
 import { HOST, SEARCHCONTACTSROUTES } from '@/utils/constants';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar';
+import { useAppStore } from '@/store';
 
 const NewDm = () => {
+    const {setSelectedChatType, setSelectedChatData} = useAppStore();
     const [openNewContactModel, setOpenNewContactModel] = useState(false)
     const [searchedContacts, setSearchedContacts] = useState([])
 
@@ -31,6 +33,13 @@ const NewDm = () => {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const selectNewContact = (contact) => {
+        setOpenNewContactModel(false);
+        setSelectedChatType("contact");
+        setSelectedChatData(contact);
+        setSearchedContacts([])
     }
 
   return (
@@ -60,6 +69,7 @@ const NewDm = () => {
               onChange={(e) => searchContacts(e.target.value)}
             />
           </div>
+          {searchedContacts.length > 0 && (
           <ScrollArea className='h-[260px]'>
             <div className='flex flex-col gap-5'>
                 {
@@ -68,6 +78,7 @@ const NewDm = () => {
                         return <div
                           key={contact._id}
                           className="flex gap-3 cursor-pointer items-center"
+                          onClick={()=>selectNewContact(contact)}
                         >
                           <div className="w-12 h-12 relative">
                             <Avatar className="h-12 w-12 rounded-full overflow-hidden">
@@ -103,8 +114,9 @@ const NewDm = () => {
                 }
             </div>
           </ScrollArea>
+          )}
           {searchedContacts.length <= 0 && (
-            <div className="flex-1 md:bg-[#1c1d25] mt-5 md:flex flex-col justify-center items-center  duration-1000 transition-all">
+            <div className="flex-1 mt-5 md:flex flex-col justify-center items-center  duration-1000 transition-all">
               <Lottie
                 isClickToPauseDisabled={true}
                 height={100}
