@@ -39,7 +39,9 @@ const MessageBar = () => {
           reciever: selectedChatData._id,
           messageType: "text"
         })
+        setMessage("")
       }
+      
     }
 
   return (

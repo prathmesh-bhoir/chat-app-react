@@ -6,8 +6,9 @@ import { io } from "socket.io-client";
 const SocketContext = createContext(null);
 
 export const useSocket = () => {
-    return useContext(SocketContext);
-}
+    return useContext(SocketContext)
+}                                                           
+
 
 export const SocketProvider = ({children}) =>{
     const socket = useRef();
@@ -24,9 +25,11 @@ export const SocketProvider = ({children}) =>{
             });
 
             const handleRecieveMessage = (message) => {
-                const { selectedChatData, selectedChatType, addMessage} = useAppStore();
-
-                if(selectedChatType!==undefined && (selectedChatData._id === message.sender._id || selectedChatData._id === message.reviever._id )){
+                
+                const { selectedChatData, selectedChatType, addMessage} = useAppStore.getState();
+                
+                if(selectedChatType !== undefined && (selectedChatData._id === message.sender._id || selectedChatData._id === message.reciever._id )){
+                    
                     addMessage(message);
                 }
             }
